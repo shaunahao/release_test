@@ -9,4 +9,4 @@
 # This is pr to add feature and bug
 # This is pr to update workflow for slack notification
 # This is pr to update workflow for NR
-# This is pr to remove emoji
+# This is pr to remove tag emoji and update NR changelog with Github Release URL
