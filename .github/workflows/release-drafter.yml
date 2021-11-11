@@ -21,21 +21,22 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           publish: true
-      # - name: Create New Relic deployment marker
-      #   uses: newrelic/deployment-marker-action@v1
-      #   with:
-      #     apiKey: ${{ secrets.NEW_RELIC_API_KEY }}
-      #     accountId: ${{ secrets.NEW_RELIC_ACCOUNT_ID }}
-      #     applicationId: ${{ secrets.NEW_RELIC_APPLICATION_ID }}
-      #     # outputs of create_release can be used to update the revision and changelog
-      #     revision: ${{ steps.create_release.outputs.tag_name }}
-      #     changelog: ${{ steps.create_release.outputs.body }}}
+      - name: Create New Relic deployment marker
+        uses: newrelic/deployment-marker-action@v1
+        with:
+          apiKey: ${{ secrets.NEW_RELIC_API_KEY }}
+          accountId: ${{ secrets.NEW_RELIC_ACCOUNT_ID }}
+          applicationId: ${{ secrets.NEW_RELIC_APPLICATION_ID }}
+          # outputs of create_release can be used to update the revision and changelog
+          revision: ${{ steps.create_release.outputs.tag_name }}
+          changelog: ${{ steps.create_release.outputs.body }}}
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         if: ${{ always() }}
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_CHANNEL: "#qe-infra-alerts"
+          SLACK_USERNAME: "Release Test"
           SLACK_COLOR: ${{ job.status == 'success' && 'good' || '#E01E5A'}}
           SLACK_TITLE: deployed ${{ steps.create_release.outputs.tag_name }}
           SLACK_MESSAGE: ${{ steps.create_release.outputs.body }}}
