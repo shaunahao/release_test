@@ -39,4 +39,4 @@ jobs:
           SLACK_USERNAME: "Release Test"
           SLACK_COLOR: ${{ job.status == 'success' && 'good' || '#E01E5A'}}
           SLACK_TITLE: deployed ${{ steps.create_release.outputs.tag_name }}
-          SLACK_MESSAGE: ${{ steps.create_release.outputs.body }}}
+          SLACK_MESSAGE: Please check more info in ${{ steps.create_release.outputs.html_url }}}
