@@ -29,7 +29,7 @@ jobs:
           applicationId: ${{ secrets.NEW_RELIC_APPLICATION_ID }}
           # outputs of create_release can be used to update the revision and changelog
           revision: ${{ steps.create_release.outputs.tag_name }}
-          changelog: ${{ steps.create_release.outputs.body }}}
+          changelog:  Please check more info in ${{ steps.create_release.outputs.html_url }}}
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         if: ${{ always() }}
@@ -39,4 +39,4 @@ jobs:
           SLACK_USERNAME: "Release Test"
           SLACK_COLOR: ${{ job.status == 'success' && 'good' || '#E01E5A'}}
           SLACK_TITLE: deployed ${{ steps.create_release.outputs.tag_name }}
-          SLACK_MESSAGE: Please check more info in ${{ steps.create_release.outputs.html_url }}}
+          SLACK_MESSAGE: ${{ steps.create_release.outputs.body }}}
