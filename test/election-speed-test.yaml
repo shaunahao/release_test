@@ -1,0 +1,96 @@
+config:
+  target: https:/
+  phases:
+    - duration: 5
+      arrivalRate: 5
+scenarios:
+  - name: base-page-USA TODAY
+    flow:
+      - get:
+          url: /origin-staging-www.usatoday.com/elections/results/
+          headers:
+            gannett-debug: "test-value"
+            fastly-debug: "test-value"
+            accept-encoding': "br, gzip"
+            Authorization: "Basic"
+  - name: date-index-page-USA TODAY
+    flow:
+      - get:
+          url: /origin-staging-www.usatoday.com/elections/results/2024-11-05/
+          headers:
+            gannett-debug: "test-value"
+            fastly-debug: "test-value"
+            accept-encoding': "br, gzip"
+            Authorization: "Basic"
+  - name: president-results-USA TODAY
+    flow:
+      - get:
+          url: /origin-staging-www.usatoday.com/elections/results/2024-11-05/president
+          headers:
+            gannett-debug: "test-value"
+            fastly-debug: "test-value"
+            accept-encoding': "br, gzip"
+            Authorization: "Basic"
+  - name: national-senate-results-USA TODAY
+    flow:
+      - get:
+          url: /origin-staging-www.usatoday.com/elections/results/2024-11-05/us-senate
+          headers:
+            gannett-debug: "test-value"
+            fastly-debug: "test-value"
+            accept-encoding': "br, gzip"
+            Authorization: "Basic"
+  - name: national-house-results-USA TODAY
+    flow:
+      - get:
+          url: /origin-staging-www.usatoday.com/elections/results/2024-11-05/us-house
+          headers:
+            gannett-debug: "test-value"
+            fastly-debug: "test-value"
+            accept-encoding': "br, gzip"
+            Authorization: "Basic"
+  - name: national-governors-results-USA TODAY
+    flow:
+      - get:
+          url: /origin-staging-www.usatoday.com/elections/results/2024-11-05/governor
+          headers:
+            gannett-debug: "test-value"
+            fastly-debug: "test-value"
+            accept-encoding': "br, gzip"
+            Authorization: "Basic"
+  - name: race/0/indiana-results-USA TODAY
+    flow:
+      - get:
+          url: /origin-staging-www.usatoday.com/elections/results/2024-11-05/race/0/indiana
+          headers:
+            gannett-debug: "test-value"
+            fastly-debug: "test-value"
+            accept-encoding': "br, gzip"
+            Authorization: "Basic"
+  - name: race/43439/tennessee-results-USA TODAY
+    flow:
+      - get:
+          url: /origin-staging-www.usatoday.com/elections/results/2024-11-05/race/43439/tennessee
+          headers:
+            gannett-debug: "test-value"
+            fastly-debug: "test-value"
+            accept-encoding': "br, gzip"
+            Authorization: "Basic"
+  - name: race/6615/colorado-results-USA TODAY
+    flow:
+      - get:
+          url: /origin-staging-www.usatoday.com/elections/results/2024-11-05/race/6615/colorado
+          headers:
+            gannett-debug: "test-value"
+            fastly-debug: "test-value"
+            accept-encoding': "br, gzip"
+            Authorization: "Basic"
+  - name: race/35392/north-carolina-results-USA TODAY
+    flow:
+      - get:
+          url: /origin-staging-www.usatoday.com/elections/results/2024-11-05/race/35392/north-carolina
+          headers:
+            gannett-debug: "test-value"
+            fastly-debug: "test-value"
+            accept-encoding': "br, gzip"
+            Authorization: "Basic"

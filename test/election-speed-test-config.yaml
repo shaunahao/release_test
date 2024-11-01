@@ -1,0 +1,4 @@
+name: elections-tests
+script: election-speed-test.yaml
+workers: 1
+rounds: 1
